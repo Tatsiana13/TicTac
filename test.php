@@ -78,6 +78,35 @@ test(
         ["O", "X", "O"],
         ["X", "X", "X"],
         ["", "", "O"]
-    ])->checkWinner(),true
+    ])->checkWinner(),
+    true
+);
+
+
+test(
+    $tictac->setMap([
+        ["", "", ""],
+        ["", "", ""],
+        ["", "", ""]
+    ])->checkWinnerByDiagonal(),
+    false
+);
+
+test(
+    $tictac->setMap([
+        ["X", "", ""],
+        ["", "X", ""],
+        ["", "", "X"]
+    ])->checkWinnerByDiagonal(),
+    true
+);
+
+test(
+    $tictac->setMap([
+        ["O", "", ""],
+        ["", "O", ""],
+        ["", "", "O"]
+    ])->checkWinnerByDiagonal(),
+    true
 );
 
