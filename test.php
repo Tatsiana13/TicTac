@@ -118,3 +118,14 @@ test(
     true
 );
 
+test(
+    $tictac->setMap([
+        ["X", "", "0", "", "0"],
+        ["", "X", "0", "0", ""],
+        ["", "", "0", "", ""],
+        ["", "0", "X", "X", ""],
+        ["0", "", "X", "", "X"]
+
+    ])->checkWinnerByPobochDiagonal(),
+    true
+);
