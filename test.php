@@ -13,7 +13,7 @@ test(
 );
 
 test(
-    $tictac->getMap(),
+    $tictac->init(2)->getMap(),
     [
         ["", ""],
         ["", ""]
@@ -21,7 +21,7 @@ test(
 );
 
 test(
-    $tictac->putCross(1, 2)->getMap(),
+    $tictac->init(3)->putCross(1, 2)->getMap(),
     [
         ["", "", ""],
         ["", "", "X"],
@@ -30,7 +30,7 @@ test(
 );
 
 test(
-    $tictac->putZero(1, 2)->getMap(),
+    $tictac->init(3)->putZero(1, 2)->getMap(),
     [
         ["", "", ""],
         ["", "", "O"],

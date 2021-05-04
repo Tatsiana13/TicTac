@@ -10,17 +10,28 @@ class TicTac
         $this->init($size);
     }
 
+    /** set map
+     * @param array $map
+     * @return $this
+     */
     public function setMap(array $map): static
     {
         $this->map = $map;
         return $this;
     }
 
+    /** return map
+     * @return array
+     */
     public function getMap(): array
     {
         return $this->map;
     }
 
+    /** map initialization
+     * @param int $size
+     * @return $this
+     */
     public function init(int $size): static
     {
         $this->map = [];
@@ -32,6 +43,11 @@ class TicTac
         return $this;
     }
 
+    /** put Cross
+     * @param int $i
+     * @param int $j
+     * @return $this
+     */
     public function putCross(int $i, int $j): static
     {
         if (isset($this->map[$i]) && isset($this->map[$i][$j]) && $this->map[$i][$j] == "") {
@@ -40,6 +56,11 @@ class TicTac
         return $this;
     }
 
+    /** put Zero
+     * @param int $i
+     * @param int $j
+     * @return $this
+     */
     public function putZero(int $i, int $j): static
     {
         if (isset($this->map[$i]) && isset($this->map[$i][$j]) && $this->map[$i][$j] == "") {
@@ -48,28 +69,40 @@ class TicTac
         return $this;
     }
 
-    public function checkWinnerByRow($map)
+    /**
+     * @param $map
+     * @return bool
+     */
+    public function checkWinnerByRow($map): bool
     {
         foreach ($map as $row) {
-            if ($row[0] != "") {
+            if ($row[0] !== "") {
                 $winner = true;
                 for ($j = 1; $j < count($row); $j++) {
-                    if ($row[$j] != $row[$j - 1]) {
+                    if ($row[$j] !== $row[$j - 1]) {
                         $winner = false;
                     }
                 }
-                if ($winner){
+                if ($winner) {
                     return true;
                 }
             }
         }
         return false;
     }
-    public function checkWinner()
+
+    /**
+     * @return bool
+     */
+    public function checkWinner() : bool
     {
         return $this->checkWinnerByRow($this->map) or $this->checkWinnerByCol();
     }
-    public function checkWinnerByCol()
+
+    /**
+     * @return bool
+     */
+    public function checkWinnerByCol() : bool
     {
         $map = array_map(null, ...$this->map);
         return $this->checkWinnerByRow($map);
