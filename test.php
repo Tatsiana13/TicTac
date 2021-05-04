@@ -110,3 +110,11 @@ test(
     true
 );
 
+test(
+    $tictac->setMap([
+        ["O", ""],
+        ["", "O"],
+    ])->checkWinnerByDiagonal(),
+    true
+);
+
