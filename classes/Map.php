@@ -5,7 +5,7 @@ class Map
 {
     protected array $map = [];
 
-    public function setMap($map): static
+    public function setMap($map)
     {
         $this->map = $map;
         return $this;

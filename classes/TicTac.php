@@ -14,7 +14,7 @@ class TicTac
      * @param array $map
      * @return $this
      */
-    public function setMap(array $map): static
+    public function setMap(array $map)
     {
         $this->map = $map;
         return $this;
@@ -32,7 +32,7 @@ class TicTac
      * @param int $size
      * @return $this
      */
-    public function init(int $size): static
+    public function init(int $size)
     {
         $this->map = [];
         for ($i = 0; $i < $size; $i++) {
@@ -48,7 +48,7 @@ class TicTac
      * @param int $j
      * @return $this
      */
-    public function putCross(int $i, int $j): static
+    public function putCross(int $i, int $j)
     {
         if (isset($this->map[$i]) && isset($this->map[$i][$j]) && $this->map[$i][$j] == "") {
             $this->map[$i][$j] = "X";
@@ -61,7 +61,7 @@ class TicTac
      * @param int $j
      * @return $this
      */
-    public function putZero(int $i, int $j): static
+    public function putZero(int $i, int $j)
     {
         if (isset($this->map[$i]) && isset($this->map[$i][$j]) && $this->map[$i][$j] == "") {
             $this->map[$i][$j] = "O";
@@ -117,6 +117,23 @@ class TicTac
             $winner = true;
             for ($i = 1; $i < count($this->map); $i++) {
                 if ($this->map[$i][$i] !== $this->map[$i - 1][$i - 1]) {
+                    $winner = false;
+                }
+            }
+            return $winner;
+        }
+        return false;
+    }
+
+    /**
+     * @return bool
+     */
+    public function checkWinnerByUnderDiagonal() : bool
+    {
+        if ($this->map[count($this->map)][count($this->map)+1-count($this->map)] !== "") {
+            $winner = true;
+            for ($i = count($this->map); count($this->map)<=$i; $i--) {
+                if ($this->map[$i][count($this->map)+1-$i] !== $this->map[$i - 1][(count($this->map)+1-$i)+ 1]) {
                     $winner = false;
                 }
             }
