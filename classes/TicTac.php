@@ -130,10 +130,10 @@ class TicTac
      */
     public function checkWinnerByUnderDiagonal() : bool
     {
-        if ($this->map[count($this->map)][count($this->map)+1-count($this->map)] !== "") {
+        if ($this->map[0][count($this->map)-1] !== "") {
             $winner = true;
-            for ($i = count($this->map); count($this->map)<=$i; $i--) {
-                if ($this->map[$i][count($this->map)+1-$i] !== $this->map[$i - 1][(count($this->map)+1-$i)+ 1]) {
+            for ($i = 1; $i < count($this->map); $i++) {
+                if ($this->map[$i][count($this->map)-1-$i] !== $this->map[$i - 1][count($this->map)-$i]) {
                     $winner = false;
                 }
             }
@@ -141,4 +141,6 @@ class TicTac
         }
         return false;
     }
+
+
 }
