@@ -111,7 +111,7 @@ class TicTac
     /**
      * @return bool
      */
-    public function checkWinnerByDiagonal() : bool
+    public function checkWinnerByDiagonal(): bool
     {
         if ($this->map[0][0] !== "") {
             $winner = true;
@@ -124,4 +124,21 @@ class TicTac
         }
         return false;
     }
+
+    public function checkWinnerBySideDiagonal(): bool
+    {
+        if ($this->map[count($this->map) - 1][0] !== "" && $this->map[0][count($this->map) - 1] !== "") {
+            $winner = true;
+            for ($i = 1; $i < count($this->map); $i++) {
+                if ($this->map[$i][$i] !== $this->map[count($this->map) - 1][$i]) {
+                    $winner = false;
+                } else {
+                    $winner = true;
+                }
+            }
+            return $winner;
+        }
+        return false;
+    }
+
 }

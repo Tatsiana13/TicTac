@@ -118,3 +118,19 @@ test(
     true
 );
 
+test(
+    $tictac->setMap([
+        ["", "", "O"],
+        ["", "O", ""],
+        ["O", "", ""]
+    ])->checkWinnerBySideDiagonal(),
+    true
+);
+
+test(
+    $tictac->setMap([
+        ["", "O"],
+        ["O", ""]
+    ])->checkWinnerBySideDiagonal(),
+    true
+);
