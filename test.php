@@ -144,3 +144,47 @@ test(
     false
 );
 
+test(
+    $tictac->setMap([
+        ["", "", ""],
+        ["", "", ""],
+        ["", "", ""]
+    ])->checkWinner(),
+    false
+);
+
+test(
+    $tictac->setMap([
+        ["X", "X", "X"],
+        ["", "", ""],
+        ["", "", ""]
+    ])->checkWinner(),
+    true
+);
+
+test(
+    $tictac->setMap([
+        ["X", "", ""],
+        ["X", "", ""],
+        ["X", "", ""]
+    ])->checkWinner(),
+    true
+);
+
+test(
+    $tictac->setMap([
+        ["X", "", ""],
+        ["", "X", ""],
+        ["", "", "X"]
+    ])->checkWinner(),
+    true
+);
+
+test(
+    $tictac->setMap([
+        ["", "", "X"],
+        ["", "X", ""],
+        ["X", "", ""]
+    ])->checkWinner(),
+    true
+);

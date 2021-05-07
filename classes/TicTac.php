@@ -96,7 +96,10 @@ class TicTac
      */
     public function checkWinner(): bool
     {
-        return $this->checkWinnerByRow($this->map) or $this->checkWinnerByCol();
+        return $this->checkWinnerByRow($this->map) or
+            $this->checkWinnerByCol() or
+            $this->checkWinnerByDiagonal() or
+            $this->checkWinnerByUnderDiagonal();
     }
 
     /**
