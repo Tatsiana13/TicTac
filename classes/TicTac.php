@@ -14,7 +14,7 @@ class TicTac
      * @param array $map
      * @return $this
      */
-    public function setMap(array $map): static
+    public function setMap(array $map)
     {
         $this->map = $map;
         return $this;
@@ -32,7 +32,7 @@ class TicTac
      * @param int $size
      * @return $this
      */
-    public function init(int $size): static
+    public function init(int $size)
     {
         $this->map = [];
         for ($i = 0; $i < $size; $i++) {
@@ -48,7 +48,7 @@ class TicTac
      * @param int $j
      * @return $this
      */
-    public function putCross(int $i, int $j): static
+    public function putCross(int $i, int $j)
     {
         if (isset($this->map[$i]) && isset($this->map[$i][$j]) && $this->map[$i][$j] == "") {
             $this->map[$i][$j] = "X";
@@ -61,7 +61,7 @@ class TicTac
      * @param int $j
      * @return $this
      */
-    public function putZero(int $i, int $j): static
+    public function putZero(int $i, int $j)
     {
         if (isset($this->map[$i]) && isset($this->map[$i][$j]) && $this->map[$i][$j] == "") {
             $this->map[$i][$j] = "O";
@@ -111,11 +111,13 @@ class TicTac
     /**
      * @return bool
      */
-    public function checkWinnerByDiagonal() : bool
+    public function checkWinnerByDiagonal(): bool
     {
+
         if ($this->map[0][0] !== "") {
             $winner = true;
-            for ($i = 1; $i < count($this->map); $i++) {
+            $n = count($this->map);
+            for ($i = 1; $i < $n; $i++) {
                 if ($this->map[$i][$i] !== $this->map[$i - 1][$i - 1]) {
                     $winner = false;
                 }
@@ -124,6 +126,7 @@ class TicTac
         }
         return false;
     }
+<<<<<<< HEAD
     public function checkWinnerByPobochDiagonal(): bool
     {
         if ($this->map[count($this->map)-1][0] !== "") {
@@ -135,10 +138,29 @@ class TicTac
                     return false;
                 }
                 $j++;
+=======
+
+    /**
+     * @return bool
+     */
+    public function checkWinnerByUnderDiagonal(): bool
+    {
+        $n = count($this->map);
+
+        if ($this->map[0][$n - 1] !== "") {
+            for ($i = 1; $i < $n; $i++) {
+                if ($this->map[$i][$n - 1 - $i] !== $this->map[$i - 1][$n - $i]) {
+                    return false;
+                }
+>>>>>>> pr/4
             }
             return true;
         }
         return false;
     }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> pr/4
 }

@@ -120,6 +120,7 @@ test(
 
 test(
     $tictac->setMap([
+<<<<<<< HEAD
         ["X", "", "0", "", "0"],
         ["", "X", "0", "0", ""],
         ["", "", "0", "", ""],
@@ -129,3 +130,29 @@ test(
     ])->checkWinnerByPobochDiagonal(),
     true
 );
+=======
+        ["x", "O", "O"],
+        ["O", "O", "x"],
+        ["O", "x", "x"]
+    ])->checkWinnerByUnderDiagonal(),
+    true
+);
+test(
+    $tictac->setMap([
+        ["O", "O", "x"],
+        ["O", "x", "O"],
+        ["x", "O", "x"]
+    ])->checkWinnerByUnderDiagonal(),
+    true
+);
+
+test(
+    $tictac->setMap([
+        ["O", "O", "O"],
+        ["O", "x", "O"],
+        ["x", "O", "x"]
+    ])->checkWinnerByUnderDiagonal(),
+    false
+);
+
+>>>>>>> pr/4
