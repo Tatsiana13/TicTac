@@ -126,4 +126,21 @@ test(
     ])->checkWinnerByUnderDiagonal(),
     true
 );
+test(
+    $tictac->setMap([
+        ["O", "O", "x"],
+        ["O", "x", "O"],
+        ["x", "O", "x"]
+    ])->checkWinnerByUnderDiagonal(),
+    true
+);
+
+test(
+    $tictac->setMap([
+        ["O", "O", "O"],
+        ["O", "x", "O"],
+        ["x", "O", "x"]
+    ])->checkWinnerByUnderDiagonal(),
+    false
+);
 
