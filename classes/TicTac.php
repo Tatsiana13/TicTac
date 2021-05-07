@@ -126,19 +126,6 @@ class TicTac
         }
         return false;
     }
-<<<<<<< HEAD
-    public function checkWinnerByPobochDiagonal(): bool
-    {
-        if ($this->map[count($this->map)-1][0] !== "") {
-            // $winner=true;
-            $j = 1;
-            for ($i = count($this->map) - 2; $i >= 0; $i--) {
-                if ($this->map[$i][$j] !== $this->map[$i + 1][$j - 1]) {
-                    // $winner = false;
-                    return false;
-                }
-                $j++;
-=======
 
     /**
      * @return bool
@@ -152,15 +139,11 @@ class TicTac
                 if ($this->map[$i][$n - 1 - $i] !== $this->map[$i - 1][$n - $i]) {
                     return false;
                 }
->>>>>>> pr/4
             }
             return true;
         }
         return false;
     }
 
-<<<<<<< HEAD
-=======
 
->>>>>>> pr/4
 }
