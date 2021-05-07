@@ -188,3 +188,22 @@ test(
     ])->checkWinner(),
     true
 );
+
+test(
+    $tictac->setMap([
+        ["", "", ""],
+        ["", "", ""],
+        ["", "", ""]
+    ])->countEmptyCells(),
+    9
+);
+
+test(
+    $tictac->setMap([
+        ["", "", "X"],
+        ["", "X", ""],
+        ["", "", "X"]
+    ])->countEmptyCells(),
+    6
+);
+
