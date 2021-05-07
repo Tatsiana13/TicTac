@@ -43,6 +43,28 @@ class TicTac
         return $this;
     }
 
+    public function checkAccess(int $i, int $j)
+    {
+        return isset($this->map[$i]) && isset($this->map[$i][$j]) && $this->map[$i][$j] == "";
+
+    }
+
+    public function countEmptyCells()
+    {
+        $count = 0;
+        foreach ($this->map as $row) {
+            foreach ($row as $cells) {
+                if ($cells == "") {
+                    $count++;
+
+
+                }
+            }
+        }
+        return $count;
+
+    }
+
     /** put Cross
      * @param int $i
      * @param int $j
@@ -50,7 +72,7 @@ class TicTac
      */
     public function putCross(int $i, int $j)
     {
-        if (isset($this->map[$i]) && isset($this->map[$i][$j]) && $this->map[$i][$j] == "") {
+        if ($this->checkAccess($i, $j)) {
             $this->map[$i][$j] = "X";
         }
         return $this;
@@ -63,7 +85,7 @@ class TicTac
      */
     public function putZero(int $i, int $j)
     {
-        if (isset($this->map[$i]) && isset($this->map[$i][$j]) && $this->map[$i][$j] == "") {
+        if ($this->checkAccess($i, $j)) {
             $this->map[$i][$j] = "O";
         }
         return $this;

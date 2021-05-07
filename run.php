@@ -13,16 +13,36 @@
 include "autoload.php";
 
 $tictac = new TicTac(3);
-$tictac
+
+$ai = new AI($tictac);
+//$ai->moveCross();
+//$ai->moveZero();
+//$ai->moveCross();
+//$ai->moveZero();
+//$ai->moveCross();
+//$ai->moveZero();
+//$ai->moveCross();
+//$ai->moveZero();
+//$ai->moveCross();
+
+while ($tictac->countEmptyCells() > 0 && !$tictac->checkWinner()) {
+    $ai->moveCross();
+    if (!$tictac->checkWinner()){
+        $ai->moveZero();
+    }
+
+}
+
+/*$tictac
     ->putCross(1, 1)
     ->putZero(0, 2)
     ->putCross(0, 1)
     ->putZero(2, 2)
     ->putCross(1, 2)
     ->putZero(0, 0)
-    ->putCross(1, 0);
+    ->putCross(1, 0);*/
 
-$tictac->checkWinnerByCol();
+//$tictac->checkWinnerByCol();
 
 $map = new Map();
 echo $map
