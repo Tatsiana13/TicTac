@@ -5,7 +5,12 @@ class Map
 {
     protected array $map = [];
 
-    public function setMap($map)
+    public function __construct(array $map = [])
+    {
+        $this->setMap($map);
+    }
+
+    public function setMap(array $map): static
     {
         $this->map = $map;
         return $this;
