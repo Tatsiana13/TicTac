@@ -10,7 +10,7 @@ class AI
         $this->tictac = $tictac;
     }
 
-    public function moveCross()
+    private function randomMove(): array
     {
         $n = count($this->tictac->getMap()) - 1;
 
@@ -20,19 +20,22 @@ class AI
 
         } while (!$this->tictac->checkAccess($i, $j) && $this->tictac->countEmptyCells() > 0);
 
-        $this->tictac->putCross($i, $j);
+        return ["i" => $i, "j" => $j];
+    }
+
+    public function moveCross()
+    {
+//        $random = $this->randomMove();
+//        $this->tictac->putCross($random["i"], $random["j"]);
+        $this->tictac->putCross(...$this->randomMove());
     }
 
     public function moveZero()
     {
-        $n = count($this->tictac->getMap()) - 1;
-        do {
-            $i = random_int(0, $n);
-            $j = random_int(0, $n);
-
-        } while (!$this->tictac->checkAccess($i, $j) && $this->tictac->countEmptyCells() > 0);
-
-        $this->tictac->putZero($i, $j);
+//        $random = $this->randomMove();
+//        $this->tictac->putZero($random["i"], $random["j"]);
+//        $this->tictac->putZero(...$random);
+        $this->tictac->putZero(...$this->randomMove());
     }
 
 
