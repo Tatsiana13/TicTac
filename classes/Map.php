@@ -20,16 +20,16 @@ class Map
     {
         $html = "<table class='tictac'>";
 
-        foreach ($this->map as $row) {
+        foreach ($this->map as $i => $row) {
 
             $html .= "<tr>";
-            foreach ($row as $cell) {
+            foreach ($row as $j => $cell) {
                 if ($cell == 'X') {
                     $html .= "<td>❌</td>";
                 } elseif ($cell == 'O') {
                     $html .= "<td>⭕</td>";
                 } else {
-                    $html .= "<td></td>";
+                    $html .= "<td><a href='?j=$j&i=$i'>R</a></td>";
                 }
 //                $html .= "<td>$cell</td>";
             }
