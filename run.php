@@ -27,7 +27,7 @@ $ai = new AI($tictac);
 
 while ($tictac->countEmptyCells() > 0 && !$tictac->checkWinner()) {
     $ai->moveCross();
-    if (!$tictac->checkWinner()){
+    if (!$tictac->checkWinner()) {
         $ai->moveZero();
     }
 
@@ -44,10 +44,7 @@ while ($tictac->countEmptyCells() > 0 && !$tictac->checkWinner()) {
 
 //$tictac->checkWinnerByCol();
 
-$map = new Map();
-echo $map
-    ->setMap($tictac->getMap())
-    ->getHtmlTable();
+echo (new Map($tictac->getMap()))->getHtmlTable();
 
 
 ?>
