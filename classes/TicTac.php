@@ -14,7 +14,7 @@ class TicTac
      * @param array $map
      * @return $this
      */
-    public function setMap(array $map)
+    public function setMap(array $map): static
     {
         $this->map = $map;
         return $this;
@@ -43,13 +43,21 @@ class TicTac
         return $this;
     }
 
-    public function checkAccess(int $i, int $j)
+    /** проверяет свободна ячейка или нет
+     * @param int $i
+     * @param int $j
+     * @return bool
+     */
+    public function checkAccess(int $i, int $j): bool
     {
         return isset($this->map[$i]) && isset($this->map[$i][$j]) && $this->map[$i][$j] == "";
 
     }
 
-    public function countEmptyCells()
+    /** считает количество пустых ячеек на карте
+     * @return int
+     */
+    public function countEmptyCells(): int
     {
         $count = 0;
         foreach ($this->map as $row) {
@@ -70,7 +78,7 @@ class TicTac
      * @param int $j
      * @return $this
      */
-    public function putCross(int $i, int $j)
+    public function putCross(int $i, int $j): static
     {
         if ($this->checkAccess($i, $j)) {
             $this->map[$i][$j] = "X";
@@ -83,7 +91,7 @@ class TicTac
      * @param int $j
      * @return $this
      */
-    public function putZero(int $i, int $j)
+    public function putZero(int $i, int $j): static
     {
         if ($this->checkAccess($i, $j)) {
             $this->map[$i][$j] = "O";
