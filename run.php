@@ -1,3 +1,44 @@
+<?php
+session_start();
+include "autoload.php";
+
+if (isset($_GET['newgame'])) {
+    unset($_SESSION['map']);
+    unset($_SESSION['message']);
+}
+
+$tictac = new TicTac(3);
+$ai = new AI($tictac);
+
+if (isset($_SESSION['map'])) {
+    $tictac->setMap($_SESSION['map']);
+}
+
+//while ($tictac->countEmptyCells() > 0 && !$tictac->checkWinner()) {
+if (isset($_GET['i']) && isset($_GET['j'])) {
+    if (!$tictac->checkWinner()) {
+        $tictac->putCross($_GET['i'], $_GET['j']);
+        if ($tictac->checkWinner()) {
+            $_SESSION['message'] = "Выиграли крестики!";
+        }
+    }
+
+//    $ai->moveCross();
+    if (!$tictac->checkWinner()) {
+        $ai->moveZero();
+        if ($tictac->checkWinner()) {
+            $_SESSION['message'] = "Выиграли нолики!";
+        }
+    }
+}
+
+if (!$tictac->checkWinner() && $tictac->countEmptyCells() == 0) {
+    $_SESSION['message'] = "Ничья!";
+}
+$_SESSION['map'] = $tictac->getMap();
+//}
+
+?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -9,44 +50,8 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<?php
-include "autoload.php";
-
-$tictac = new TicTac(3);
-
-$ai = new AI($tictac);
-//$ai->moveCross();
-//$ai->moveZero();
-//$ai->moveCross();
-//$ai->moveZero();
-//$ai->moveCross();
-//$ai->moveZero();
-//$ai->moveCross();
-//$ai->moveZero();
-//$ai->moveCross();
-
-while ($tictac->countEmptyCells() > 0 && !$tictac->checkWinner()) {
-    $ai->moveCross();
-    if (!$tictac->checkWinner()) {
-        $ai->moveZero();
-    }
-
-}
-
-/*$tictac
-    ->putCross(1, 1)
-    ->putZero(0, 2)
-    ->putCross(0, 1)
-    ->putZero(2, 2)
-    ->putCross(1, 2)
-    ->putZero(0, 0)
-    ->putCross(1, 0);*/
-
-//$tictac->checkWinnerByCol();
-
-echo (new Map($tictac->getMap()))->getHtmlTable();
-
-
-?>
+<a href="?newgame">Новая Игра</a>
+<h1><?= $_SESSION['message'] ?? "" ?></h1>
+<?= (new Map($tictac->getMap()))->getHtmlTable() ?>
 </body>
 </html>
